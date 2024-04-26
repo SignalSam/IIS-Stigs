@@ -1,0 +1,25 @@
+Notes for Compliance Item scripts:
+
+V-218787: An IIS 10.0 web server behind a load balancer or proxy server must produce log records containing the source client IP and destination information.
+There is no script for this item as the check is performed on another system not the one being analyzed and out of scope for this tool.
+
+V-218790: The log information from the IIS 10.0 web server must be protected from unauthorized modification or deletion.
+This check wants explicity only SYSTEM and Administrators to have "Full Control". In most enterprises you may have additional rules which will cause this check to be ruled non-compliant even though you accept what permissions are applied. You can either ignore/disable this check and manually validate or add rules to the $ExpectedRules variable. That work is performed approximately below line #66, look for the line that reads "# Function variables to setup access entries." If you can't figure it out, reach out for help in setting up additional rules. In any case if you're accepting additional rules you need to report it on the STIG checklist.
+
+V-218791: The log data and records from the IIS 10.0 web server must be backed up onto a different system or media.
+There is no script for this as the Backup policy and procedure are external and out of scope for this tool.
+
+V-218702: The IIS 10.0 web server must not perform user management for hosted applications.
+There is no script for this as it involves a discussion with the SA regarding how user management is performed.
+
+V-218793: The IIS 10.0 web server must only contain functions necessary for operation.
+There is no script for this, while it could be done it would require knowledge of the approved software baseline for every target system and an extensive whitelist. This is out of scope for this tool.
+
+V-218795: All IIS 10.0 web server sample code, example applications, and tutorials must be removed from a production IIS 10.0 server.
+The check isn't very specific in what to look for by default. Script only checks "msadc" directories mentioned and only if there's items inside, ignores them if they're empty, someone should try to verify if it's safe to consider these directories and the files within deletable. There are no virtual directories using them by default.
+
+V-218796: The accounts created by uninstalled features (i.e., tools, utilities, specific, etc.) must be deleted from the IIS 10.0 server.
+There is no script for this, while it could be done it would require knowledge of the approved local account baseline for every target system and an extensive whitelist. This is out of scope for this tool.
+
+V-218797: The IIS 10.0 web server must be reviewed on a regular basis to remove any Operating System features, utility programs, plug-ins, and modules not necessary for operation.
+There is no script for this, while it could be done it would require knowledge of the approved Windows Features baseline for every target system and an extensive whitelist. This is out of scope for this tool.

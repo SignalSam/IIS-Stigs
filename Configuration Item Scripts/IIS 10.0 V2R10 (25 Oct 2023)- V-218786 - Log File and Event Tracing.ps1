@@ -43,6 +43,7 @@ Fix Text:
 <#
 This script checks and reports compliance of the following items listed in the relevant check:
 * Log event destination for each website on the server is set to "File,ETW".
+This check is done per site.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

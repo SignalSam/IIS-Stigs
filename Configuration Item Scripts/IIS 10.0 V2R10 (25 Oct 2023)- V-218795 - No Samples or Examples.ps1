@@ -29,6 +29,7 @@ Fix Text: Remove any executable sample code, example applications, or tutorials 
 <#
 This script checks and reports compliance of the following items listed in the relevant check:
 * Checks if there are any items in the default MSADC directories.
+This check is done per server.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

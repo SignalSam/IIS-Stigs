@@ -38,6 +38,7 @@ Fix Text:
 <#
 This script checks and reports compliance of the following items listed in the relevant check:
 * Checks if the ARR proxy is installed, if so if it is enabled.
+This check is done per server.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.
@@ -47,9 +48,6 @@ This script makes no changes to any configuration or settings.
 
 Function Get-IISAppRequestRoutingConfig
 {
-    [CmdletBinding()]
-    Param ([Parameter(Mandatory=$True)][Alias('N')][String] $Name)
-
     # Function variable for desired state.
     [String] $ProxyEnabled = 'false'
 
@@ -72,17 +70,7 @@ $ErrorActionPreference = 'Stop'
 # Script variable to track overall compliance.
 [Boolean] $CheckCompliant = $True
 
-Try
-{
-    [System.Collections.Generic.List[Microsoft.IIs.PowerShell.Framework.ConfigurationElement]] $IISSites = Get-Website
-
-    ForEach ($IISSite In $IISSites)
-    {
-        If (-NOT (Get-IISAppRequestRoutingConfig -Name $IISSite.Name))
-            { $CheckCompliant = $False }
-    }
-}
-Catch
-    { $Host.SetShouldExit(1) }
+If (-NOT (Get-IISAppRequestRoutingConfig))
+    { $CheckCompliant = $False }
 
 Write-Output $CheckCompliant

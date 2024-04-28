@@ -62,6 +62,7 @@ This script checks and reports compliance of the following items listed in the r
 * Log format for each website on the server is set to "W3C".
 * Existence of 2 custom log fields configured as defined in the STIG check. Log field display names
 are not factored, extra custom fields are ignored.
+These checks are done per site.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

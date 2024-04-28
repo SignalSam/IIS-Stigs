@@ -60,6 +60,7 @@ This script checks and reports compliance of the following items listed in the r
 * The minimum required logging fields are enabled.
 * Existence of 2 custom log fields configured as defined in the STIG check. Log field display names
 are not factored, extra custom fields are ignored.
+These checks are done per site.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

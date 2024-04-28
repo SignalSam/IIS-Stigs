@@ -48,6 +48,7 @@ Fix Text:
 <#
 This script checks and reports compliance of the following items listed in the relevant check:
 * Permissions on the log directory match what the check defines.
+This check is done per server.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

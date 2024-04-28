@@ -53,6 +53,7 @@ Fix Text:
 This script checks and reports compliance of the following items listed in the relevant check:
 * Log format for each website on the server is set to "W3C".
 * The minimum required logging fields are enabled.
+This check is done per site.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.

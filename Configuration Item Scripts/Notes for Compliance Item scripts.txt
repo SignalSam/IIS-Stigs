@@ -23,3 +23,7 @@ There is no script for this, while it could be done it would require knowledge o
 
 V-218797: The IIS 10.0 web server must be reviewed on a regular basis to remove any Operating System features, utility programs, plug-ins, and modules not necessary for operation.
 There is no script for this, while it could be done it would require knowledge of the approved Windows Features baseline for every target system and an extensive whitelist. This is out of scope for this tool.
+
+V-218800: The IIS 10.0 web server must perform RFC 5280-compliant certification path validation.
+This script isn't loaded with DoD certificate thumbprints, I don't know what they are. You will need to add entries for the ones you used. The line to add them is approx. line #53 and reads: $GoodThumbprints.Add('')
+Enter the thumbprint between the single quotes and add as many as you need.

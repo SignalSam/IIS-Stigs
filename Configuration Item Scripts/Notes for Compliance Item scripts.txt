@@ -27,3 +27,25 @@ There is no script for this, while it could be done it would require knowledge o
 V-218800: The IIS 10.0 web server must perform RFC 5280-compliant certification path validation.
 This script isn't loaded with DoD certificate thumbprints, I don't know what they are. You will need to add entries for the ones you used. The line to add them is approx. line #53 and reads: $GoodThumbprints.Add('')
 Enter the thumbprint between the single quotes and add as many as you need.
+
+V-218801: Java software installed on a production IIS 10.0 web server must be limited to .class files and the Java Virtual Machine.
+You will likely have to set a higher script execution timeout on the compliance item because this is a search against all drives recursivly and it will take longer than the default to run.
+https://learn.microsoft.com/en-us/mem/configmgr/core/get-started/2022/technical-preview-2205#bkmk_timeout
+
+V-218802: IIS 10.0 Web server accounts accessing the directory tree, the shell, or other operating system functions and utilities must only be administrative accounts.
+There is no script for this, while it could be done it would require knowledge of the approved accounts for every target system and an extensive whitelist. This is out of scope for this tool.
+
+V-218803: The IIS 10.0 web server must separate the hosted applications from hosted web server management functionality.
+There is no script for this, while it could be done it would require knowledge of the approved accounts for every target system and an extensive whitelist. This is out of scope for this tool.
+
+V-218806: The IIS 10.0 web server must augment re-creation to a stable and known baseline.
+There is no script for this as the Disaster Recovery policy and procedure are external and out of scope for this tool.
+
+V-218809: The IIS 10.0 web server Indexing must only index web content.
+There is no script for this. It can be done if a standard root location for all index websites is provided.
+
+V-218812: The IIS 10.0 web server must restrict inbound connections from non-secure zones.
+There is no script for this, the IIS Management Service is server-only. I don't think you are using this anyway which would render this check N/A.
+
+V-218813: The IIS 10.0 web server must provide the capability to immediately disconnect or disable remote access to the hosted applications.
+There is no script for this, it's about maintaining a documented procedure for shutdown of websites.

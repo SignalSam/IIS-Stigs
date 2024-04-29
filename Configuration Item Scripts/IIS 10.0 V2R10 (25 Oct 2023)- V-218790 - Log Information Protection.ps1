@@ -116,8 +116,6 @@ Try
     }
 }
 Catch
-    {write-host 'ouch'
-        # $Host.SetShouldExit(1) 
-    }
+    { $Host.SetShouldExit(1) }
 
 Write-Output $CheckCompliant

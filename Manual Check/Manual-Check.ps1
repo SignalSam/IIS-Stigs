@@ -5,7 +5,7 @@ Write-Host 'Version 2, Release: 10 Benchmark Date: 25 Oct 2023' -ForegroundColor
 Write-Host 'Loading STIG checks from:'
 Write-Host (Get-Item -Path .\Enabled).FullName
 [System.Collections.Generic.List[System.IO.FileInfo]] $EnabledChecks = Get-ChildItem -Path .\Enabled
-Write-Host "$($EnabledChecks.Count) check loaded."
+Write-Host "$($EnabledChecks.Count) check(s) loaded."
 Write-Host
 Write-Host 'Performing checks...' -ForegroundColor Yellow
 

@@ -44,8 +44,8 @@ Fix Text:
 # Script Information
 <#
 This script checks and reports compliance of the following items listed in the relevant check:
-* Checks if "IIS > Error Pages> Feature Settings..." is set to "Detailed errors for local requests and custom error pages for remote requests" or "Custom error pages".
-This check is done per server.
+* Permissions on the root site directory match what the check defines.
+This check is done per site.
 
 This script returns a true or false value representing compliance on the whole, any item failure
 will result in the entire check being considered non-compliant.
@@ -57,7 +57,7 @@ This script makes no changes to any configuration or settings.
 Function Get-IISSiteRootDirectoryAccess
 {
     [CmdletBinding()]
-    Param ([Parameter(Mandatory=$True)][Alias('N')][String] $Path)
+    Param ([Parameter(Mandatory=$True)][Alias('P')][String] $Path)
 
     # Function variable to track discovery of unexpected rule.
     [Boolean] $UnexpectedRuleFound = $False
@@ -71,7 +71,7 @@ Function Get-IISSiteRootDirectoryAccess
     [System.Security.Principal.NTAccount] $TrustedInstaller = 'NT SERVICE\TrustedInstaller'
     [System.Security.Principal.NTAccount] $AllApplicationPackages = 'APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES'
     [System.Security.Principal.NTAccount] $AllRestrictedApplicationPackages = 'APPLICATION PACKAGE AUTHORITY\ALL RESTRICTED APPLICATION PACKAGES'
-    # Typedef isn't needed for checking.
+    # Typedef isn't needed for checking, only setting.
     #[System.Security.Principal.SecurityIdentifier] $AllRestrictedApplicationPackages = `
     #    [Security.Principal.NTAccount]::new('ALL RESTRICTED APPLICATION PACKAGES').Translate([System.Security.Principal.SecurityIdentifier])
     [System.Security.Principal.NTAccount] $Users = 'BUILTIN\Users'
@@ -133,6 +133,6 @@ Try
     }
 }
 Catch
-    { write-host 'ouch'}#$Host.SetShouldExit(1) }
+    { $Host.SetShouldExit(1) }
 
 Write-Output $CheckCompliant

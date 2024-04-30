@@ -52,3 +52,27 @@ There is no script for this, it's about maintaining a documented procedure for s
 
 V-218814: IIS 10.0 web server system files must conform to minimum file permission requirements.
 May need to provide the exact ACL of the Inetpub directory to configure this script to know what to expect. Along the same lines as V-218790.
+
+V-218815: The IIS 10.0 web server must use a logging mechanism configured to allocate log record storage capacity large enough to accommodate the logging requirements of the IIS 10.0 web server.
+The threshold for storage capcity is user-defined and default set to 100GB. You can change it to # of GB on approx. line #64, the line reads: [Double] $MinimumFreeSpaceInGB = 100
+
+V-218816: Access to web administration tools must be restricted to the web manager and the web managers designees.
+Script is check for as close to what the check wants, you may need to modify the expected permissions.
+
+V-218817: The IIS 10.0 web server must not be running on a system providing any other role.
+There is no script for this. It can be done if a standard program baseline is provided.
+
+V-218819: The IIS 10.0 web server must be tuned to handle the operational requirements of the hosted application.
+There is no script for this. It can be done if someone provides what values the mentioned registry kets need to be set to.
+
+V-218822: The IIS 10.0 web server must maintain the confidentiality of controlled information during transmission through the use of an approved Transport Layer Security (TLS) version.
+I don't know if this is actually checking properly since I don't have a hardened TLS 1.2 server to test on. Need feedback.
+
+V-218823: All accounts installed with the IIS 10.0 web server software and tools must have passwords assigned and default passwords changed.
+There is no script for this. It's about checking accounts, and if they're used by IIS if the passwords have been changed. This is out of scope for this tool.
+
+V-218825: The IIS 10.0 web server must have a global authorization rule configured to restrict access.
+This check should fail on WSUS servers as they require anonymous authentication.
+
+V-228572: An IIS Server configured to be a SMTP relay must require authentication.
+There is no script for this. You shouldn't be running any SMTP relays at all.
